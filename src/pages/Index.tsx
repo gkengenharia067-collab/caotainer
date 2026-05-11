@@ -16,10 +16,20 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
+import whatsappLogo from "@/assets/whatsapp-logo.png";
 
 const WHATSAPP = "https://wa.me/5567996081588";
-const WHATSAPP_MSG = "https://wa.me/5567996081588?text=Ol%C3%A1%2C%20vim%20pelo%20site%20%F0%9F%90%BE";
-const WHATSAPP_PROD = "https://wa.me/5567996081588?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20informa%C3%A7%C3%B5es%20sobre%20este%20produto%20%F0%9F%90%BE";
+const waLink = (msg: string) => `https://wa.me/5567996081588?text=${encodeURIComponent(msg)}`;
+
+const WA_MSGS = {
+  hero: "Olá! Vim pelo site e gostaria de agendar um horário para meu pet 🐾",
+  menu: "Olá! Quero agendar um atendimento na Cãotainer 🐾",
+  contato: "Olá! Vim pelo site e gostaria de mais informações sobre a Cãotainer 🐾",
+  ctaFinal: "Olá! Quero agendar uma visita para meu pet na Cãotainer 🐾",
+  floating: "Olá! Vim pelo site da Cãotainer e quero falar com vocês 🐾",
+  servico: (nome: string) => `Olá! Vim pelo site e tenho interesse no serviço: ${nome} 🐾`,
+  produto: (nome: string) => `Olá! Vim pelo site e quero informações sobre: ${nome} 🐾`,
+};
 
 const nav = [
   { label: "Início", href: "#inicio" },
@@ -93,7 +103,7 @@ const Index = () => {
 
           <div className="flex items-center gap-2">
             <Button asChild className="hidden sm:inline-flex h-11 px-5 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold shadow-yellow">
-              <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer">Agendar</a>
+              <a href={waLink(WA_MSGS.menu)} target="_blank" rel="noopener noreferrer">Agendar</a>
             </Button>
             <Button variant="ghost" size="icon" className="lg:hidden rounded-full" onClick={() => setMenuOpen(true)} aria-label="Abrir menu">
               <Menu className="w-6 h-6" />
@@ -119,7 +129,7 @@ const Index = () => {
               ))}
             </nav>
             <Button asChild className="mt-6 w-full h-12 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold">
-              <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp</a>
+              <a href={waLink(WA_MSGS.menu)} target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp</a>
             </Button>
           </div>
         </div>
@@ -140,7 +150,7 @@ const Index = () => {
             </p>
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <Button asChild size="lg" className="h-14 px-7 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-pop text-base font-bold">
-                <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer">
+                <a href={waLink(WA_MSGS.hero)} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 w-5 h-5" /> Agendar pelo WhatsApp
                 </a>
               </Button>
@@ -188,7 +198,7 @@ const Index = () => {
             return (
               <a
                 key={c.title}
-                href={WHATSAPP_MSG}
+                href={waLink(WA_MSGS.servico(c.title))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group relative rounded-[2rem] p-5 sm:p-7 shadow-card hover:shadow-pop transition-bouncy hover:-translate-y-2 overflow-hidden ${
@@ -256,7 +266,7 @@ const Index = () => {
               <h3 className="font-display font-black text-base sm:text-lg leading-tight">{p.name}</h3>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 mb-4 flex-1">{p.desc}</p>
               <Button asChild className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground font-bold">
-                <a href={WHATSAPP_PROD} target="_blank" rel="noopener noreferrer">Comprar</a>
+                <a href={waLink(WA_MSGS.produto(p.name))} target="_blank" rel="noopener noreferrer">Comprar</a>
               </Button>
             </div>
           ))}
@@ -346,7 +356,7 @@ const Index = () => {
               </div>
             </div>
             <Button asChild size="lg" className="mt-7 h-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-pop font-bold w-fit">
-              <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer">
+              <a href={waLink(WA_MSGS.contato)} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 w-5 h-5" /> Falar no WhatsApp
               </a>
             </Button>
@@ -376,7 +386,7 @@ const Index = () => {
             Agende agora pelo WhatsApp e venha conhecer a Cãotainer.
           </p>
           <Button asChild size="lg" className="h-16 px-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg shadow-pop">
-            <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer">
+            <a href={waLink(WA_MSGS.ctaFinal)} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 w-6 h-6" /> Falar no WhatsApp
             </a>
           </Button>
@@ -407,7 +417,7 @@ const Index = () => {
                 <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary hover:text-primary grid place-items-center transition-colors">
                   <Facebook className="w-4 h-4" />
                 </a>
-                <a href={WHATSAPP_MSG} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary hover:text-primary grid place-items-center transition-colors">
+                <a href={waLink(WA_MSGS.contato)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary hover:text-primary grid place-items-center transition-colors">
                   <MessageCircle className="w-4 h-4" />
                 </a>
               </div>
@@ -449,18 +459,15 @@ const Index = () => {
 
       {/* Floating WhatsApp button */}
       <a
-        href={WHATSAPP_MSG}
+        href={waLink(WA_MSGS.floating)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"
         className="fixed bottom-5 right-5 z-50 group"
       >
-        <span className="absolute inset-0 rounded-full bg-[hsl(142_70%_45%)] animate-pulse-ring" />
-        <span className="relative grid place-items-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[hsl(142_70%_45%)] text-white shadow-whatsapp hover:scale-110 transition-bouncy">
-          {/* WhatsApp icon */}
-          <svg viewBox="0 0 32 32" className="w-7 h-7 sm:w-8 sm:h-8 fill-current" aria-hidden="true">
-            <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.717 2.722.717.817 0 2.15-.473 2.494-1.29.158-.387.158-.93.116-1.32-.043-.215-3.07-1.677-3.275-1.677zM16.5 28.5C9.61 28.5 4 22.89 4 16S9.61 3.5 16.5 3.5 29 9.11 29 16s-5.61 12.5-12.5 12.5zm0-23.5C10.16 5 5 10.16 5 16.5c0 2.06.55 4.06 1.59 5.81L5 28.5l6.36-1.66c1.69.93 3.6 1.41 5.54 1.41h.01c6.34 0 11.5-5.16 11.5-11.5S22.84 5 16.5 5z"/>
-          </svg>
+        <span className="absolute inset-2 rounded-full bg-[hsl(142_70%_45%)] animate-pulse-ring" />
+        <span className="relative grid place-items-center w-14 h-14 sm:w-16 sm:h-16 rounded-full hover:scale-110 transition-bouncy drop-shadow-[0_10px_20px_hsl(142_70%_45%/0.5)]">
+          <img src={whatsappLogo} alt="WhatsApp" width={64} height={64} className="w-full h-full object-contain" />
         </span>
       </a>
     </div>
