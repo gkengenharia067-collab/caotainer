@@ -1,33 +1,38 @@
-## Paleta baseada na fachada da loja
+## Objetivo
 
-Vou usar exatamente as duas cores da foto enviada (fachada da Cãotainer):
+Personalizar a mensagem pré-preenchida em cada botão que abre o WhatsApp, de acordo com o contexto onde ele aparece, e trocar o ícone SVG do botão flutuante pela imagem do logo oficial do WhatsApp.
 
-- **Azul fachada** (cor dominante): azul vibrante e saturado, tipo `hsl(212 85% 42%)` — usado em header, botões primários, blocos de destaque, ícones e gradientes.
-- **Amarelo letreiro** (cor de destaque): amarelo quente das letras "CÃO", tipo `hsl(45 100% 58%)` — usado em CTAs secundários, badges, highlights e detalhes.
-- Fundo geral claro e neutro para o azul e amarelo respirarem.
+## Mapeamento de mensagens por botão
 
-## O que muda
+Todos abrem `https://wa.me/5567996081588?text=...` com a mensagem específica:
 
-1. **`src/index.css`** — atualizar tokens HSL:
-   - `--primary` → azul da fachada
-   - `--primary-glow` → azul um pouco mais claro
-   - `--secondary` / `--accent` → amarelo do letreiro
-   - `--ring` → azul
-   - `--gradient-hero` → azul → azul-claro
-   - `--gradient-sun` → mantém amarelo
-   - `--shadow-pop` / `--shadow-card` → tons de azul
-   - Dark mode ajustado para a mesma dupla
+| Local | Texto do botão | Mensagem pré-preenchida |
+|---|---|---|
+| Menu mobile | "Agendar pelo WhatsApp" | "Olá! Quero agendar um atendimento na Cãotainer 🐾" |
+| Hero (topo) | "Agendar pelo WhatsApp" | "Olá! Vim pelo site e gostaria de agendar um horário para meu pet 🐾" |
+| Cards de serviços (já existentes em `WHATSAPP_PROD`) | "Quero este serviço" | "Olá! Vim pelo site e tenho interesse no serviço: {nome do serviço} 🐾" |
+| Seção Contato | "Falar no WhatsApp" | "Olá! Vim pelo site e gostaria de mais informações sobre a Cãotainer 🐾" |
+| CTA Final | "Falar no WhatsApp" | "Olá! Quero agendar uma visita para meu pet na Cãotainer 🐾" |
+| Footer (ícone social) | aria "WhatsApp" | mesma do contato |
+| Botão flutuante | — | "Olá! Vim pelo site da Cãotainer e quero falar com vocês 🐾" |
 
-2. **`src/assets/hero-pets.jpg`** — regerar imagem hero com fundo/ambiente azul, pets felizes, vibe da fachada (chapas metálicas azuis + amarelo).
+Observação: para os cards de serviços, a mensagem incluirá dinamicamente o nome do serviço (ex.: "Banho & Tosa", "Consulta Veterinária"), substituindo o link único atual `WHATSAPP_PROD`.
 
-3. **`src/pages/Index.tsx`** — sem mudança estrutural; já usa tokens semânticos (`bg-primary`, `text-primary`, `bg-secondary`), então as cores se atualizam automaticamente.
+## Botão flutuante — logo do WhatsApp
 
-4. **Botão flutuante WhatsApp** — manter verde WhatsApp (padrão de reconhecimento), só com leve animação já existente.
+- Substituir o SVG inline atual pela imagem oficial do logo do WhatsApp (PNG com fundo transparente), gerada e salva em `src/assets/whatsapp-logo.png`.
+- Manter: posição fixa canto inferior direito, círculo verde de fundo, animação de pulso (`animate-pulse-ring`) e hover com leve scale.
+- Tamanho da imagem: ocupar ~60% do círculo (assim como o ícone atual), com `alt="WhatsApp"`.
 
-## O que NÃO muda
+## Detalhes técnicos
 
-- Conteúdo, textos, links, endereço, WhatsApp, rodapé, créditos.
-- Layout, seções e tipografia (Fraunces + Plus Jakarta Sans).
-- Estrutura de componentes.
+- Em `src/pages/Index.tsx`, criar um helper `waLink(msg: string)` que retorna `https://wa.me/5567996081588?text=` + `encodeURIComponent(msg)`.
+- Remover as constantes `WHATSAPP_MSG` e `WHATSAPP_PROD` e usar `waLink(...)` em cada CTA com sua mensagem.
+- Para os cards de serviços, passar o nome do serviço para `waLink` no `map`.
+- Importar `whatsappLogo from "@/assets/whatsapp-logo.png"` e usar `<img>` no botão flutuante no lugar do `<svg>`.
+- Nenhuma mudança de layout, cores ou estrutura — apenas links e o ícone do botão flutuante.
 
-Resultado: identidade visual fiel à fachada real da loja — azul forte com letras/CTAs amarelos.
+## Arquivos afetados
+
+- `src/pages/Index.tsx` (mensagens + troca do ícone flutuante)
+- `src/assets/whatsapp-logo.png` (novo, gerado)
