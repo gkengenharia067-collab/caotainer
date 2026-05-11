@@ -16,10 +16,20 @@ import g3 from "@/assets/gallery-3.jpg";
 import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
+import whatsappLogo from "@/assets/whatsapp-logo.png";
 
 const WHATSAPP = "https://wa.me/5567996081588";
-const WHATSAPP_MSG = "https://wa.me/5567996081588?text=Ol%C3%A1%2C%20vim%20pelo%20site%20%F0%9F%90%BE";
-const WHATSAPP_PROD = "https://wa.me/5567996081588?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20informa%C3%A7%C3%B5es%20sobre%20este%20produto%20%F0%9F%90%BE";
+const waLink = (msg: string) => `https://wa.me/5567996081588?text=${encodeURIComponent(msg)}`;
+
+const WA_MSGS = {
+  hero: "Olá! Vim pelo site e gostaria de agendar um horário para meu pet 🐾",
+  menu: "Olá! Quero agendar um atendimento na Cãotainer 🐾",
+  contato: "Olá! Vim pelo site e gostaria de mais informações sobre a Cãotainer 🐾",
+  ctaFinal: "Olá! Quero agendar uma visita para meu pet na Cãotainer 🐾",
+  floating: "Olá! Vim pelo site da Cãotainer e quero falar com vocês 🐾",
+  servico: (nome: string) => `Olá! Vim pelo site e tenho interesse no serviço: ${nome} 🐾`,
+  produto: (nome: string) => `Olá! Vim pelo site e quero informações sobre: ${nome} 🐾`,
+};
 
 const nav = [
   { label: "Início", href: "#inicio" },
