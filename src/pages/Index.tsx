@@ -22,13 +22,13 @@ const WHATSAPP = "https://wa.me/5567996081588";
 const waLink = (msg: string) => `https://wa.me/5567996081588?text=${encodeURIComponent(msg)}`;
 
 const WA_MSGS = {
-  hero: "Olá! Vim pelo site e gostaria de agendar um horário para meu pet 🐾",
-  menu: "Olá! Quero agendar um atendimento na Cãotainer 🐾",
-  contato: "Olá! Vim pelo site e gostaria de mais informações sobre a Cãotainer 🐾",
-  ctaFinal: "Olá! Quero agendar uma visita para meu pet na Cãotainer 🐾",
-  floating: "Olá! Vim pelo site da Cãotainer e quero falar com vocês 🐾",
-  servico: (nome: string) => `Olá! Vim pelo site e tenho interesse no serviço: ${nome} 🐾`,
-  produto: (nome: string) => `Olá! Vim pelo site e quero informações sobre: ${nome} 🐾`,
+  hero: "Olá! Vim pelo site e gostaria de agendar um horário para meu pet",
+  menu: "Olá! Quero agendar um atendimento na Cãotainer",
+  contato: "Olá! Vim pelo site e gostaria de mais informações sobre a Cãotainer",
+  ctaFinal: "Olá! Quero agendar uma visita para meu pet na Cãotainer",
+  floating: "Olá! Vim pelo site da Cãotainer e quero falar com vocês",
+  servico: (nome: string) => `Olá! Vim pelo site e tenho interesse no serviço: ${nome}`,
+  produto: (nome: string) => `Olá! Vim pelo site e quero informações sobre: ${nome}`,
 };
 
 const nav = [
@@ -66,7 +66,7 @@ const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background">
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground text-xs sm:text-sm">
         <div className="container flex items-center justify-between py-2 gap-3">
@@ -140,10 +140,10 @@ const Index = () => {
         <div className="container grid lg:grid-cols-2 gap-10 lg:gap-12 items-center py-12 sm:py-16 lg:py-24 relative">
           <div className="relative z-10 text-center lg:text-left">
             <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary mb-5 px-4 py-2 rounded-full font-bold">
-              🐾 Pet Shop · Clínica · Banho & Tosa
+              Pet Shop · Clínica · Banho & Tosa
             </Badge>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] mb-5">
-              O melhor para o seu <span className="text-primary">pet</span> está aqui 🐾
+              O melhor para o seu <span className="text-primary">pet</span> está aqui
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8">
               Amor, cuidado e profissionais que realmente amam animais. Em Campo Grande/MS.
@@ -192,7 +192,7 @@ const Index = () => {
           <Badge variant="outline" className="mb-3 border-primary text-primary rounded-full">Nossos serviços</Badge>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black">Tudo que seu pet <span className="text-primary">precisa</span></h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="flex lg:grid lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
           {categorias.map((c, i) => {
             const isPrimary = c.color === "primary";
             return (
@@ -201,7 +201,7 @@ const Index = () => {
                 href={waLink(WA_MSGS.servico(c.title))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative rounded-[2rem] p-5 sm:p-7 shadow-card hover:shadow-pop transition-bouncy hover:-translate-y-2 overflow-hidden ${
+                className={`group relative rounded-[2rem] p-5 sm:p-7 shadow-card hover:shadow-pop transition-bouncy hover:-translate-y-2 overflow-hidden shrink-0 w-[75%] sm:w-[45%] lg:w-auto snap-start ${
                   isPrimary ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
                 }`}
               >
@@ -244,7 +244,7 @@ const Index = () => {
       <section id="banho" className="container py-16 sm:py-20">
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
-            <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary mb-3 rounded-full font-bold">🛍️ Pet Shop</Badge>
+            <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary mb-3 rounded-full font-bold">Pet Shop</Badge>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black">Produtos para o seu <span className="text-primary">pet</span></h2>
           </div>
         </div>
@@ -288,7 +288,7 @@ const Index = () => {
                 A Cãotainer Petshop oferece amor, cuidado e serviços completos para o seu pet, incluindo clínica veterinária, banho e tosa, sempre com profissionais apaixonados por animais.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["🩺 Clínica", "✂️ Banho & Tosa", "🐕 Pet Shop", "💛 Carinho"].map(t => (
+                {["Clínica", "Banho & Tosa", "Pet Shop", "Carinho"].map(t => (
                   <span key={t} className="px-4 py-2 rounded-full bg-primary-foreground/15 text-sm font-bold backdrop-blur-sm">{t}</span>
                 ))}
               </div>
@@ -308,7 +308,7 @@ const Index = () => {
           <Badge variant="outline" className="mb-3 border-primary text-primary rounded-full inline-flex items-center gap-1">
             <Instagram className="w-3.5 h-3.5" /> @caotainerpets
           </Badge>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black">Pets que <span className="text-primary">passaram por aqui</span> 💛</h2>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black">Pets que <span className="text-primary">passaram por aqui</span></h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {galeria.map((img, i) => (
@@ -380,7 +380,7 @@ const Index = () => {
           <PawPrint className="absolute bottom-8 right-8 w-24 h-24 text-primary/10 rotate-12" />
           <Sparkles className="absolute top-12 right-16 w-10 h-10 text-primary/20" />
           <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-primary max-w-2xl mx-auto mb-6 leading-tight">
-            Seu pet merece o melhor cuidado 🐾
+            Seu pet merece o melhor cuidado
           </h2>
           <p className="text-primary/80 mb-8 max-w-xl mx-auto text-base sm:text-lg">
             Agende agora pelo WhatsApp e venha conhecer a Cãotainer.
@@ -408,7 +408,7 @@ const Index = () => {
                 </div>
               </div>
               <p className="opacity-80 text-sm max-w-sm mb-5">
-                🐾 Amor e cuidado para o seu pet. Clínica Veterinária | Banho & Tosa.
+                Amor e cuidado para o seu pet. Clínica Veterinária | Banho & Tosa.
               </p>
               <div className="flex gap-2">
                 <a href="https://instagram.com/caotainerpets" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary hover:text-primary grid place-items-center transition-colors">
