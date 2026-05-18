@@ -1,0 +1,9 @@
+# Cãotainer Petshop
+
+> Pet shop, clínica veterinária e banho & tosa em Campo Grande/MS.
+
+A Cãotainer oferece atendimento veterinário, banho e tosa, e venda de produtos (rações, brinquedos, acessórios e higiene) para cães e gatos. Atendemos de segunda a sábado na Av. Rita Vieira de Andrade, 870, Campo Grande - MS.
+
+## Pages
+
+- [Início](/): Visão geral dos serviços, produtos, galeria e contato.
