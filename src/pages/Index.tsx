@@ -54,10 +54,10 @@ const diferenciais = [
 ];
 
 const produtos = [
-  { name: "Rações Premium", desc: "Nutrição completa para todas as fases", img: prodRacao, badge: "Top vendas" },
-  { name: "Brinquedos", desc: "Diversão garantida para seu pet", img: prodBrinquedo, badge: "Novidade" },
-  { name: "Acessórios", desc: "Coleiras, guias e muito mais", img: prodAcessorio, badge: "Estilo" },
-  { name: "Higiene", desc: "Shampoos, escovas e cuidados", img: prodHigiene, badge: "Cuidado" },
+  { name: "Rações Premium", desc: "Nutrição completa para todas as fases", img: prodRacao, badge: "Top vendas", alt: "Saco de ração premium para cães e gatos" },
+  { name: "Brinquedos", desc: "Diversão garantida para seu pet", img: prodBrinquedo, badge: "Novidade", alt: "Brinquedos coloridos para pets" },
+  { name: "Acessórios", desc: "Coleiras, guias e muito mais", img: prodAcessorio, badge: "Estilo", alt: "Acessórios para cães e gatos" },
+  { name: "Higiene", desc: "Shampoos, escovas e cuidados", img: prodHigiene, badge: "Cuidado", alt: "Produtos de higiene pet" },
 ];
 
 const galeria = [g1, g2, g3, g4, g5, g6];
@@ -143,7 +143,7 @@ const Index = () => {
               Pet Shop · Clínica · Banho & Tosa
             </Badge>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] mb-5">
-              O melhor para o seu <span className="text-primary">pet</span> está aqui
+              Cão<span className="text-primary">tainer</span> Petshop — Clínica Veterinária, Banho e Tosa em Campo Grande
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8">
               Amor, cuidado e profissionais que realmente amam animais. Em Campo Grande/MS.
@@ -167,7 +167,7 @@ const Index = () => {
           <div className="relative">
             <div className="absolute -inset-8 bg-sun rounded-full blur-3xl opacity-40 animate-float-slow" />
             <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-pop border-8 border-background">
-              <img src={heroPets} alt="Cachorro e gato felizes na Cãotainer Petshop" className="w-full h-full object-cover" width={1024} height={1024} />
+              <img src={heroPets} alt="Cachorro e gato felizes na Cãotainer Petshop" className="w-full h-full object-cover" width={1024} height={1024} fetchPriority="high" />
             </div>
             <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-background rounded-3xl p-3 sm:p-4 shadow-card flex items-center gap-3 animate-float-slow">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sun grid place-items-center">
@@ -256,7 +256,7 @@ const Index = () => {
                 <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground hover:bg-primary rounded-full font-bold z-10 text-[10px] sm:text-xs">{p.badge}</Badge>
                 <img
                   src={p.img}
-                  alt={p.name}
+                  alt={p.alt}
                   loading="lazy"
                   width={300}
                   height={300}
@@ -319,7 +319,7 @@ const Index = () => {
               rel="noopener noreferrer"
               className="group relative aspect-square rounded-3xl overflow-hidden shadow-card hover:shadow-pop transition-bouncy"
             >
-              <img src={img} alt={`Pet atendido ${i + 1}`} loading="lazy" width={500} height={500} className="w-full h-full object-cover group-hover:scale-110 transition-bouncy" />
+              <img src={img} alt={`Pet atendido na Cãotainer Petshop ${i + 1}`} loading="lazy" width={500} height={500} className="w-full h-full object-cover group-hover:scale-110 transition-bouncy" />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/40 transition-colors grid place-items-center">
                 <Instagram className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
@@ -467,7 +467,7 @@ const Index = () => {
       >
         <span className="absolute inset-2 rounded-full bg-[hsl(142_70%_45%)] animate-pulse-ring" />
         <span className="relative grid place-items-center w-14 h-14 sm:w-16 sm:h-16 rounded-full hover:scale-110 transition-bouncy drop-shadow-[0_10px_20px_hsl(142_70%_45%/0.5)]">
-          <img src={whatsappLogo} alt="WhatsApp" width={64} height={64} className="w-full h-full object-contain" />
+          <img src={whatsappLogo} alt="Logotipo do WhatsApp" width={64} height={64} className="w-full h-full object-contain" />
         </span>
       </a>
     </div>
