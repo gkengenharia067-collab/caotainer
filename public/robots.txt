@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://bright-petz-revamp.lovable.app/sitemap.xml
